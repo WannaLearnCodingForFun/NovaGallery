@@ -1,0 +1,96 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #111;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+  background-color: #111;
+  color: #eee;
+}
+
+header {
+  padding: 1.5rem;
+  text-align: center;
+  background-color: #f0f0f0;
+}
+
+body.dark header {
+  background-color: #1a1a1a;
+}
+
+.tagline {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+input {
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  width: 80%;
+  max-width: 400px;
+}
+
+main {
+  padding: 2rem;
+  text-align: center;
+}
+
+.gallery ul {
+  list-style: none;
+  padding: 0;
+}
+
+.gallery li {
+  margin: 0.5rem 0;
+}
+
+/* Dark mode toggle */
+.switch {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  width: 40px;
+  height: 20px;
+  background: #ccc;
+  display: inline-block;
+  border-radius: 20px;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.slider::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: 0.3s;
+}
+
+input:checked + .slider {
+  background: #007bff;
+}
+
+input:checked + .slider::before {
+  transform: translateX(20px);
+}
