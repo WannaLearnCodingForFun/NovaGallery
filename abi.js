@@ -1,6 +1,6 @@
 const CONTRACT_ADDRESS = "0x4434eaa80acec7a70dd9fdae39fc72d65f2f6f96";
 
-const CONTRACT_ABI = [ "abi": [
+const CONTRACT_ABI = [ 
 		{
 			"inputs": [],
 			"stateMutability": "nonpayable",
