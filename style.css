@@ -1,64 +1,176 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
+/* ----------  GLOBAL RESET & BASE ----------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: #fff;
+}
+
+html, body {
+  height: 100%;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* background gradient – light & dark */
+body {
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
   color: #111;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background 0.4s ease, color 0.3s ease;
 }
 
 body.dark {
-  background-color: #111;
-  color: #eee;
+  background: linear-gradient(135deg, #0d0d15 0%, #1a1a2e 100%);
+  color: #f5f5f5;
 }
 
+/* ----------  HEADER ----------- */
 header {
-  padding: 1.5rem;
+  position: sticky; /* stays at top on scroll */
+  top: 0;
+  width: 100%;
+  padding: 1.75rem 1rem 2rem;
   text-align: center;
-  background-color: #f0f0f0;
+
+  /* glass-like effect */
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 body.dark header {
-  background-color: #1a1a1a;
+  background: rgba(20, 20, 32, 0.55);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
 }
 
 .tagline {
-  font-size: 1rem;
-  margin: 0.5rem 0;
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+body.dark .tagline {
+  color: #bbb;
+}
+
+/* ----------  BUTTONS & INPUTS  ----------- */
+button,
+input[type="text"] {
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  padding: 0.6rem 1rem;
 }
 
 button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
   cursor: pointer;
+  background: #2563eb;          /* indigo-600 */
+  color: #fff;
+  transition: background 0.25s ease;
 }
 
-input {
-  padding: 0.5rem;
-  margin-top: 0.5rem;
-  width: 80%;
-  max-width: 400px;
+button:hover {
+  background: #1d4ed8;          /* indigo-700 */
 }
 
+button:disabled {
+  background: #94a3b8;          /* slate-400 */
+  cursor: not-allowed;
+}
+
+input[type="text"] {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border: 1px solid #d1d5db;    /* gray-300 */
+}
+
+body.dark input[type="text"] {
+  background: #181826;
+  border-color: #333;
+  color: #e5e7eb;
+}
+
+/* ----------  MAIN LAYOUT ----------- */
 main {
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 3rem 1rem 6rem;
+}
+
+/* cards */
+section {
+  width: 100%;
+  max-width: 680px;
+  padding: 2rem 1.75rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+}
+
+body.dark section {
+  background: rgba(28, 28, 42, 0.75);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* section headings */
+section h2 {
+  margin-bottom: 1.2rem;
+  font-size: 1.45rem;
+  font-weight: 600;
   text-align: center;
 }
 
+/* ----------  MINT AREA  ----------- */
+.mint-section form,
+.mint-section div {
+  display: flex;
+  gap: 0.75rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 480px) {
+  .mint-section form,
+  .mint-section div {
+    flex-direction: row;
+  }
+}
+
+/* ----------  GALLERY LIST ----------- */
 .gallery ul {
   list-style: none;
-  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+  padding-top: 0.5rem;
 }
 
 .gallery li {
-  margin: 0.5rem 0;
+  background: #e0e7ff;
+  border-radius: 8px;
+  padding: 0.7rem;
+  font-size: 0.85rem;
+  text-align: center;
+  word-break: break-word;
 }
 
-/* Dark mode toggle */
+body.dark .gallery li {
+  background: #26263b;
+}
+
+/* ----------  DARK MODE TOGGLE  ----------- */
 .switch {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 1.9rem;   /* aligns with header padding */
+  right: 1.25rem;
 }
 
 .switch input {
@@ -66,31 +178,35 @@ main {
 }
 
 .slider {
-  width: 40px;
-  height: 20px;
-  background: #ccc;
-  display: inline-block;
-  border-radius: 20px;
+  width: 46px;
+  height: 24px;
+  background: #bebebe;
+  border-radius: 24px;
   position: relative;
-  transition: background 0.3s;
+  transition: background 0.3s ease;
 }
 
 .slider::before {
-  content: '';
-  width: 16px;
-  height: 16px;
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
   background: #fff;
   border-radius: 50%;
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  transition: 0.3s;
+  transition: transform 0.3s ease;
 }
 
 input:checked + .slider {
-  background: #007bff;
+  background: #2563eb;
 }
 
 input:checked + .slider::before {
-  transform: translateX(20px);
+  transform: translateX(22px);
+}
+
+/* ----------  UTIL ----------- */
+.hidden {
+  display: none !important;
 }
