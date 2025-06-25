@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NovaGallery — Onchain Art</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🖼️ NovaGallery</h1>
+    <p class="tagline">Curate your digital legacy on the blockchain.</p>
+    <button id="connectWallet">Connect Wallet</button>
+    <label class="switch">
+      <input type="checkbox" id="darkToggle" />
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <main>
+    <section class="mint-section">
+      <h2>Mint Your NFT</h2>
+      <input type="text" id="tokenURI" placeholder="Enter image URI (IPFS)" />
+      <button id="mintBtn">Mint NFT</button>
+    </section>
+
+    <section class="gallery">
+      <h2>Your NFTs</h2>
+      <ul id="galleryList"></ul>
+    </section>
+  </main>
+
+  <script src="abi.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
